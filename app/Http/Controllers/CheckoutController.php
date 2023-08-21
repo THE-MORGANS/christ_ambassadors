@@ -8,13 +8,20 @@ use Paystack;
 use App\Models\Gallery;
 use App\Models\checkout;
 use App\Models\Order;
+use Session;
+use Stripe\Stripe;
+use Stripe\Charge;
 
 class CheckoutController extends Controller
 {
     public function index(){
+        $cartItems = Cart::content();
+        if ($cartItems->isEmpty()) {
+            return redirect()->route('ecommerce'); // Redirect to the home route
+        }
         // Retrieve cart data
         $sixItemsgallery = Gallery::inRandomOrder()->limit(6)->get();
-        $cartItems = Cart::content();
+       
         if ($cartItems->isEmpty()) {
             // Redirect back to the cart page
             return redirect()->route('cart')->with('error', 'Your cart is empty. Add items to proceed to checkout.');
@@ -61,34 +68,102 @@ class CheckoutController extends Controller
             'totalamount' => $item->sum('total'),
         ]);
        
-
         // Initialize Paystack
-        $paystack = new Paystack();
+       // $paystack = new Paystack();
         
-        try{
-            $data = array(
-                "amount" => $item->sum('total') * 100,
-                "metadata" => array(
-                   'fullname' => '',
-                   'subtotal' => $item->sum('total'),
-                   'service' => 'DedicatedPlan',
-                   'payment_options' => 'Paystack',
-                   "phone_number" => '',
-                ),
+       try{
+            //Stripe::setApiKey(config('services.stripe.secret'));
+            
+            // $data = array(
+            //     "amount" => $item->sum('total') * 100,
+            //     "metadata" => array(
+            //         'Fname' => $request->Fname, 
+            //         'Lname' => $request->Lname,
+            //         'Cname' => $request->Cname,
+            //         'country' => $request->country,
+            //         'Orderoption' => $request->Orderoption,
+            //         'inputAddress' => $request->inputAddress,
+            //         'differentaddress' => $request->differentaddress,
+            //         'inputAddress2' => $request->inputAddress2,
+            //         'city' => $request->city,
+            //         'state' => $request->state,
+            //         'zipcode'=> $request->zipcode,
+            //         'pnumber' => $request->pnumber,
+            //         'email' => $request->email,
+            //         'country' => $request->country,
+            //         'subtotal' => $item->sum('total'),
+            //         'totalamount' => $item->sum('total'),
+            //     ),
                 
-                "reference" => Paystack::genTranxRef() ,
-                "email" => $request->email,
-                "currency" => "NGN",
-                "orderID" => $item[0]->order_number,
-            );
-            $pay = Paystack::getAuthorizationUrl($data)->redirectNow();
-            Cart::destroy();
-           // dd($pay);
-            return $pay; 
-        }catch(\Exception $e) {
-            dd($e);
-          return Redirect::back()->withMessage(['msg'=>'The paystack token has expired. Please refresh the page and try again.', 'type'=>'error']);
+            //     "reference" => Paystack::genTranxRef() ,
+            //     "email" => $request->email,
+            //     "currency" => "NGN",
+            //     "orderID" => $item[0]->order_number,
+            // );
+            //$pay = Paystack::getAuthorizationUrl($data)->redirectNow();
+            // Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+            // $customer = Stripe\Customer::create(
+            //     array(
+            //     "address" => [
+            //         'Fname' => $request->Fname, 
+            //         'Lname' => $request->Lname,
+            //         'Cname' => $request->Cname,
+            //         'country' => $request->country,
+            //         'Orderoption' => $request->Orderoption,
+            //         'inputAddress' => $request->inputAddress,
+            //         'differentaddress' => $request->differentaddress,
+            //         'inputAddress2' => $request->inputAddress2,
+            //         'city' => $request->city,
+            //         'state' => $request->state,
+            //         'zipcode'=> $request->zipcode,
+            //         'pnumber' => $request->pnumber,
+            //         'email' => $request->email,
+            //         'country' => $request->country,
+            //         'subtotal' => $item->sum('total'),
+            //         'totalamount' => $item->sum('total'),
+            //         "orderID" => $item[0]->order_number,
+            //     ],
+            //     'email' => $request->email,
+            //     "source" => $request->stripeToken
+            // ));
+            // Stripe\Charge::create ([
+            //     "amount" => 100 * 100,
+            //     "currency" => "usd",
+            //     "customer" => $customer->id,
+            //     "description" => "Test payment from itsolutionstuff.com.",
+            //     "shipping" => [
+            //       "name" => "Jenny Rosen",
+            //       "address" => [
+            //         "line1" => "510 Townsend St",
+            //         "postal_code" => "98140",
+            //         "city" => "San Francisco",
+            //         "state" => "CA",
+            //         "country" => "US",
+            //       ],
+            //     ]
+            // ]); 
+            // $charge = Charge::create([
+            //     'amount' => $request->amount,
+            //     'currency' => 'usd', // Change to your currency
+            //     'source' => $request->stripeToken,
+            // ]);
+
+            // Handle successful payment
+            // You can update your database, send email, etc.
+            
+    
+           // return redirect()->away($session->url);
+            return redirect()->back()->with('success', 'Payment was successful.'); 
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            // Handle payment failure
+            return redirect()->back()->with('error', 'Payment failed: ' . $e->getMessage());
         }
+    }
+    public function success()
+    {
+        return redirect()->back()->with('success', 'Payment was successful.'); 
+        //return "Thanks for you order You have just completed your payment. The seeler will reach out to you as soon as possible";
     }
 
      /**

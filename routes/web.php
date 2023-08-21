@@ -19,7 +19,6 @@ use App\Http\Controllers\PaymentController;
 */ 
 
 
-
 // Route::get('/')
 Route::controller(AuthController::class)->group(function(){
     Route::post("adminlogin", "adminlogin");
@@ -48,8 +47,10 @@ Route::controller(ViewController::class)->group(function(){
     //Team
     Route::get('team-01', 'team01')->name('team01');
     Route::get('team-02', 'team02')->name('team02');
+    
 
 });
+ 
 
 Route::controller(CartController::class)->group(function(){
      //Cart
@@ -65,12 +66,13 @@ Route::controller(CheckoutController::class)->group(function(){
    Route::post('storecheckout/', 'store')->name('checkout.store');
    //Payment Callback
     Route::get('/payment/callback',  'handleGatewayCallback');
-
+  
 });
 
 Route::controller(PaymentController::class)->group(function(){
-    //Checkout
-    Route::post('payment', 'index')->name('payment');
+    Route::post('payment', 'pay')->name('payment');
+    Route::get('success', 'success');
+    Route::get('error', 'errorpayment');
     //Payment Callback
     Route::get('checkout',  'handleGatewayCallback');
 

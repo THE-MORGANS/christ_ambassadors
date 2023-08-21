@@ -76,7 +76,7 @@
             <!--title--> 
             
             <div class="nicdark_space20"></div>
-            <form action="{{ route('checkout.store')}}" method="POST">
+            <form action="{{ route('payment')}}" method="POST">
                 @csrf
                 <div class="nicdark_archive1 nicdark_bg_grey nicdark_radius nicdark_shadow">
                     <div class="nicdark_textevidence nicdark_bg_yellow nicdark_radius_top">
@@ -100,9 +100,14 @@
                         <input required name="inputAddress" class="nicdark_bg_grey2 nicdark_radius nicdark_shadow grey small subtitle" type="text" value="" size="200">
                         <div class="nicdark_space20"></div>
                         <br><br>
+                        <p>Country:</p>
+                        <div class="nicdark_space5"></div>
+                        <input required name="country" class="nicdark_bg_grey2 nicdark_radius nicdark_shadow grey small subtitle" type="text" value="" size="200">
+                        <div class="nicdark_space20"></div>
+                        <br><br>
                         <p>CITY:</p>
                         <div class="nicdark_space5"></div>
-                        <input required name="City" class="nicdark_bg_grey2 nicdark_radius nicdark_shadow grey small subtitle" type="text" value="" size="200">
+                        <input required name="city" class="nicdark_bg_grey2 nicdark_radius nicdark_shadow grey small subtitle" type="text" value="" size="200">
                         <div class="nicdark_space20"></div>
                         <br><br>
                         <p>STATE:</p>
@@ -110,14 +115,15 @@
                         <input required name="state" class="nicdark_bg_grey2 nicdark_radius nicdark_shadow grey small subtitle" type="text" value="" size="200">
                         <div class="nicdark_space20"></div>
                         <br><br>
+                        
                         <p>ZIP:</p>
                         <div class="nicdark_space5"></div>
-                        <input required name="Zipcode" class="nicdark_bg_grey2 nicdark_radius nicdark_shadow grey small subtitle" type="text" value="" size="200">
+                        <input required name="zipcode" class="nicdark_bg_grey2 nicdark_radius nicdark_shadow grey small subtitle" type="text" value="" size="200">
                         <div class="nicdark_space20"></div>
                         <br><br>
                         <p>E-MAIL:</p>
                         <div class="nicdark_space5"></div>
-                        <input required name="email" class="nicdark_bg_grey2 nicdark_radius nicdark_shadow grey small subtitle" type="email" value="" size="200">
+                        <input required name="email" class="nicdark_bg_grey2 nicdark_radius nicdark_shadow grey small subtitle" type="text" value="" size="200">
                         <div class="nicdark_space20"></div>
                         <br><br>
                         <p>PHONE:</p>
