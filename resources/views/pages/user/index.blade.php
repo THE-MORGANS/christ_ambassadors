@@ -4,7 +4,7 @@
 @section('title', 'Christ Ambassadors - No. 1 Site for Christian Podcasts')
  
 @section('style')  
-<style>
+<style> 
     /* nav{
           background-color: #022147;
       } */
@@ -32,19 +32,19 @@
                 <ul>
                     <!--start first-->
                     <li data-transition="fade" data-slotamount="7" data-masterspeed="500" data-saveperformance="on"  data-title="FRIENDS">
-                        <img src="{{ asset('assets/img/slide/img3.jpg')}}"  alt="" data-lazyload="{{ asset('assets/img/slide/slider-06.jpg')}}" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat">
+                        <img src="{{ asset('assets/img/slide/slider-06.jpg')}}"  alt="" data-lazyload="{{ asset('assets/img/slide/slider-06.jpg')}}" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat">
                     </li>
                     <!--end first-->
 
                     <!--start second-->
                     <li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on"  data-title="LESSON">
-                        <img src="{{ asset('assets/img/slide/img8.jpg')}}"  alt="" data-lazyload="{{ asset('assets/img/slide/slider-01.jpg')}}" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
+                        <img src="{{ asset('assets/img/slide/slider-01.jpg')}}"  alt="" data-lazyload="{{ asset('assets/img/slide/slider-01.jpg')}}" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
                     </li>
                     <!--end second-->
 
                      <!--start second-->
                      <li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on"  data-title="CHURCH">
-                        <img src="{{ asset('assets/img/slide/img8.jpg')}}"  alt="" data-lazyload="{{ asset('assets/img/slide/slider.jpeg')}}" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
+                        <img src="{{ asset('assets/img/slide/slider.jpeg')}}"  alt="" data-lazyload="{{ asset('assets/img/slide/slider.jpeg')}}" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
                     </li>
                     <!--end Thiird-->
 
