@@ -115,7 +115,8 @@ class PaymentController extends Controller
 
     public function errorpayment()
     {
-        return 'User declined the payment!';   
+       // return 'User declined the payment!'; 
+        return view('pages.user.error');  
     }
 
     public function handleGatewayCallback(){ $cartItems = [];

@@ -8,10 +8,11 @@
     <div class="page page-center">
         <div class="container container-tight py-4">
         <div class="text-center mb-4">
-            <a href="." class="navbar-brand navbar-brand-autodark"><img src="./static/logo.svg" height="36" alt=""></a>
+            <a href="#" class="navbar-brand navbar-brand-autodark"><img src="{{ asset('assets/img/ca_logo.svg')}}" height="36" alt=""></a>
         </div>
         <div class="card card-md">
             <div class="card-body">
+            <img width="270px" height="43px" alt="" src="{{ asset('assets/img/ca_logo.svg')}}">
             <h2 class="h2 text-center mb-4">Admin Login to your account</h2>
                 
            

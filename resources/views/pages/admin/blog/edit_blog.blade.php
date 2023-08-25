@@ -90,6 +90,13 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
+                                        <label class="form-label">Post Short Writeup</label>
+                                        <textarea name='post_shortwriteup' rows="6" class="form-control"  placeholder="Content...">{{ $blog->shortwriteup }}</textarea>
+                                        @error('post_shortwriteup')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
                                         <label class="form-label">Post Content</label>
                                         <textarea name='post_content' rows="6" class="form-control"  placeholder="Content...">{{ $blog->content }}</textarea>
                                         @error('post_content')

@@ -19,7 +19,7 @@
         <div class="grid grid_12 percentage">
                 <div class="nicdark_space10"></div>
                 <div class="nicdark_logo ">
-                    <a href="{{ url('/')}}">
+                    <a href="{{ url('/')}}"> 
                         <img width="270px" height="43px" alt="" src="{{ asset('assets/img/ca_logo.svg')}}">
                     </a>
                 </div>

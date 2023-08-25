@@ -85,7 +85,7 @@
         <?php $totalBlogs = count($blogs); ?>
         @foreach ($blogs as $index => $blog)
           <?php
-          $encrypted_id = encrypt($blog->id);
+           $encrypted_id = encrypt($blog->id);
           ?>
           <div class="grid grid_4 nicdark_masonry_item excursions">
             <div class="nicdark_archive1 nicdark_bg_green nicdark_radius nicdark_shadow">
@@ -100,7 +100,7 @@
                       <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
                       <div class="nicdark_space20"></div>
                       <p class="white">
-                        {{ \Illuminate\Support\Str::limit($blog->shortwriteup, 200, '...') }}
+                        {{ \Illuminate\Support\Str::limit($blog->shortwriteup, 100, '...') }}
                       </p>
                       <div class="nicdark_space20"></div>
                       <a href="{{ route('blog_detail', ['encrypted_id'=> $encrypted_id]) }}" class="white nicdark_btn">

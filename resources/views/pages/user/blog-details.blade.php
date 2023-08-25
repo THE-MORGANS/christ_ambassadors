@@ -245,6 +245,10 @@
                 </div>
                 <ul class="nicdark_list border">
                     @forelse ($recentPosts as $item)
+                      <?php
+                        $encrypted_id = encrypt($item->id);
+                      ?>
+                      <a href="{{ route('blog_detail', ['encrypted_id'=> $encrypted_id]) }}">
                         <li class="nicdark_border_grey">
                             <div class="nicdark_margin20 nicdark_relative">
                             <img alt="" class="nicdark_absolute nicdark_radius" style="width:60px; height:40px" src="{{ asset('assets/'.$item->featured_image) }}">
@@ -256,6 +260,7 @@
                                 </p>
                             </div></div>
                         </li>
+                      </a>
                     @empty
                         <p class="text-danger">No Post Found</p>
                     @endforelse
@@ -271,6 +276,10 @@
                 </div>
                 <ul class="nicdark_list border">
                     @forelse ($nextevents as $event)
+                      <?php
+                        $encrypted_id = encrypt($event->id);
+                      ?>
+                      <a href="#">
                         <li class="nicdark_border_grey">
                             <div class="nicdark_margin20 nicdark_relative">
                                 <div style="width:60px;" class="nicdark_absolute nicdark_activity center">    
@@ -299,6 +308,7 @@
                                 </div>
                             </div>
                         </li>
+                      </a>
                     @empty
                         <p class="text-danger">No Post(s) Found</p>
                     @endforelse

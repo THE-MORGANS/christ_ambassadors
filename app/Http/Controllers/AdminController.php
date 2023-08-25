@@ -280,6 +280,7 @@ class AdminController extends Controller
             $request->validate([
                 'post_title' => 'required|exists:blogs,posttitle',
                 'post_content' => 'required',
+                'post_shortwriteup' => 'required',
                 'post_category' => 'required',
                 'reference' => 'required',
                 'featured_image' => 'required|image|mimes:jpeg,png,jpg|max:3024',
@@ -287,6 +288,7 @@ class AdminController extends Controller
                 'post_title.required' => 'The Post title is required.',
                 'post_title.exists' => 'The Post Title already exists',
                 'post_content.required' => 'The Post Content is required',
+                'post_shortwriteup.required' => 'The Post Content is required',
                 'post_category' => 'The Post Category is required',
                 'reference' => 'The Reference is required',
                 'featured_image.required' => 'Upload the correct format jpeg, jpg, png'
@@ -323,6 +325,7 @@ class AdminController extends Controller
              // Update the product's image name in the database
             $upload->featured_image = 'blogs/'. $postimage;
             $upload->posttitle = $request->post_title;
+            $upload->shortwriteup = $request->post_shortwriteup;
             $upload->content = $request->post_content;
             $upload->category = $request->post_category;
             $upload->reference = $request->reference;
@@ -351,6 +354,7 @@ class AdminController extends Controller
             $update = Blog::where('id', $request->blog_id)->update([
                 'admin_id' => auth()->id(),
                 'posttitle' =>  $request->post_title,
+                'shortwriteup' =>  $request->post_shortwriteup,
                 'content' =>  $request->post_content,
                 'category' => $request->post_category,
                 'reference' => $request->reference,
@@ -613,10 +617,10 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Podcast created successfully!');       
     }
 
-    public function Logout() {
+    public function Logout() { 
         Auth::logout();
         Session::invalidate();
         Session::flush();
-        return redirect('/');
+        return redirect('admin');
     }
 }

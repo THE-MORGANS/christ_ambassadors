@@ -10,6 +10,13 @@
   <link href="admin_assets/dist/css/tabler-payments.min.css?1684106062" rel="stylesheet"/>
   <link href="admin_assets/dist/css/tabler-vendors.min.css?1684106062" rel="stylesheet"/>
   <link href="admin_assets/dist/css/demo.min.css?1684106062" rel="stylesheet"/>
+
+  <!--FAVICONS-->
+  <link rel="shortcut icon" href="{{ asset('assets/img/favicon/favicon.png')}}">
+  <link rel="apple-touch-icon" href="{{ asset('assets/img/favicon/apple-touch-icon.png')}}">
+  <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('assets/img/favicon/apple-touch-icon-72x72.png')}}">
+  <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('assets/img/favicon/apple-touch-icon-114x114.png')}}">
+  
   <style>
     @import url('https://rsms.me/inter/inter.css');
     :root {

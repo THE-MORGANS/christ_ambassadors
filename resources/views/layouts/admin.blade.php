@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <head>
+  <head> 
     @include('partials.admin.head')
     @stack('stylesheet');
     @livewireStyles
