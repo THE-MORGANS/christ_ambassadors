@@ -113,6 +113,5 @@ Route::controller(AdminController::class)->group(function(){
     //Podcast
     Route::get('admin-podcast', 'podcast')->name('admin.podcast');
     Route::post('post.podcast', 'postpodcast')->name('post.podcast');
-
-    Route::get('admin', 'logout')->name('logout');
+    Route::get('adminlogout', 'logout')->name('logout');
     });
