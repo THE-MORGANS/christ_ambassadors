@@ -41,7 +41,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Event Venue</label>
-                        <input required type="text" class="form-control" name="event_venue" placeholder="Event Address" value="Melbourne, Australia">
+                        <input required type="text" class="form-control" name="event_venue" placeholder="Event Address" value="">
                         @error('post_content')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror

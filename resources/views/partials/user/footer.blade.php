@@ -24,11 +24,11 @@
                         <div class="nicdark_space20"></div>
                         <div class="nicdark_divider left small"><span class="nicdark_bg_white nicdark_radius"></span></div>
                         <div class="nicdark_space20"></div>
-                        <a href="contact-1.html" class="nicdark_btn_icon nicdark_bg_orange small nicdark_shadow nicdark_radius white">
+                        <a href="#" class="nicdark_btn_icon nicdark_bg_orange small nicdark_shadow nicdark_radius white">
                             <i class="icon-mail-1 nicdark_rotate"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="contact-1.html" class="nicdark_btn_icon nicdark_bg_yellow small nicdark_shadow nicdark_radius white">
+                        <a href="#" class="nicdark_btn_icon nicdark_bg_yellow small nicdark_shadow nicdark_radius white">
                             <i class="icon-home nicdark_rotate"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="contact-1.html" class="nicdark_btn_icon nicdark_bg_red small nicdark_shadow nicdark_radius white">
+                        <a href="#" class="nicdark_btn_icon nicdark_bg_red small nicdark_shadow nicdark_radius white">
                             <i class="icon-phone-outline nicdark_rotate"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
                 </div>

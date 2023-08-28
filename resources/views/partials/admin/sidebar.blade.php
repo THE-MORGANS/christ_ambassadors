@@ -141,60 +141,20 @@
     <div class="collapse navbar-collapse" id="sidebar-menu">
       <ul class="navbar-nav pt-lg-3">
         
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false" >
+        <li class="nav-item ">
+          <a class="nav-link" href="{{ route('admin.adminhome') }}"  >
             <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+                <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+              </svg>
             </span>
             <span class="nav-link-title">
               Home
             </span>
           </a>
-          <div class="dropdown-menu">
-            <div class="dropdown-menu-columns">
-              <div class="dropdown-menu-column">
-                <a class="dropdown-item" href="{{ url('homebanner')}}">
-                  Home banner
-                </a>
-                
-                <div class="dropend">
-                  <a class="dropdown-item dropdown-toggle" href="#sidebar-cards" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false" >
-                    Cards
-                    <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                  </a>
-                  <div class="dropdown-menu">
-                    <a href="./cards.html" class="dropdown-item">
-                      Sample cards
-                    </a>
-                    <a href="./card-actions.html" class="dropdown-item">
-                      Card actions
-                      <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                    </a>
-                    <a href="./cards-masonry.html" class="dropdown-item">
-                      Cards Masonry
-                    </a>
-                  </div>
-                </div>
-                
-                <a class="dropdown-item" href="./charts.html">
-                  Charts
-                </a>
-                
-              </div>
-              <div class="dropdown-menu-column">
-               
-                <a class="dropdown-item" href="./tinymce.html">
-                  TinyMCE
-                  <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                </a>
-                <a class="dropdown-item" href="./inline-player.html">
-                  Inline player
-                  <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                </a>
-                
-              </div>
-            </div>
-          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ route('admin.ecommerce') }}" >

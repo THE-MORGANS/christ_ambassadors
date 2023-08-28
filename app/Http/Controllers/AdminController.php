@@ -278,7 +278,7 @@ class AdminController extends Controller
         //dd($request->product_id);
         if($request->hasFile('featured_image')){
             $request->validate([
-                'post_title' => 'required|exists:blogs,posttitle',
+                'post_title' => 'required',
                 'post_content' => 'required',
                 'post_shortwriteup' => 'required',
                 'post_category' => 'required',
@@ -286,7 +286,6 @@ class AdminController extends Controller
                 'featured_image' => 'required|image|mimes:jpeg,png,jpg|max:3024',
             ],[
                 'post_title.required' => 'The Post title is required.',
-                'post_title.exists' => 'The Post Title already exists',
                 'post_content.required' => 'The Post Content is required',
                 'post_shortwriteup.required' => 'The Post Content is required',
                 'post_category' => 'The Post Category is required',
@@ -428,12 +427,108 @@ class AdminController extends Controller
         if(!request()->event_id){
             return abort(404);
         }else{
-            $event = Blog::find(request()->event_id);
+            $event = Event::find(request()->event_id);
             $data = [
                 'event' => $event,
                 'pageTitle' => 'Edit Event',
             ];
             return view('pages.admin.event.editevent', $data);
+        }
+    }
+
+     
+    public function updateevent(Request $request){
+        //dd($request->product_id);
+        if($request->hasFile('featured_image')){
+            $request->validate([
+                'event_title' => 'required',
+                'event_content' => 'required',
+                'event_date' => 'required',
+                'event_time' => 'required',
+                'event_venue' => 'required',
+                'featured_image' => 'required|image|mimes:jpeg,png,jpg|max:3024',
+            ],[
+                'event_title.required' => 'The Event title is required.',
+                'event_content.required' => 'The Event Content is required',
+                'event_date.required' => 'The Event Date is required',
+                'event_time.required' => 'The Event Time is required',
+                'event_venue' => 'The Event Venue is required',
+                'featured_image.required' => 'Upload the correct format jpeg, jpg, png'
+            ]);
+
+            if ($request->hasFile('featured_image')) {
+
+                $image = $request->file('featured_image');
+                $postimage = uniqid() . '.' . $image->getClientOriginalExtension();
+                $image->storeAs('public/events', $postimage);
+
+                $upload = Event::find($request->event_id);
+                if (!$upload) {
+                    return redirect()->back()->withError('Event not found.');
+                }
+            
+                // Delete the existing image if it exists
+                if (!empty($upload->featured_image)) {
+                    $existingImagePath = public_path('assets/events/') . $upload->postimage;
+                    if (file_exists($existingImagePath)) {
+                        unlink($existingImagePath);
+                    }
+                }
+            
+                $uploadedImage = $request->file('featured_image');
+                // Generate a unique name for the image using a timestamp and original extension
+                $postimage = time() . '.' . $uploadedImage->getClientOriginalExtension();
+                // Use Intervention Image to resize and save the image to the public directory
+                $image = Image::make($uploadedImage->getRealPath());
+                $image->resize(600, 400); // You can customize the size as per your requirements
+                $image->save(public_path('assets/events/' . $postimage)); // Save the image to the public/assets/products directory
+            
+            }
+             // Update the product's image name in the database
+            $upload->event_image = 'events/'. $postimage;
+            $upload->event_title = $request->event_title;
+            $upload->event_content = $request->event_content;
+            $upload->event_date = $request->event_date;
+            $upload->event_time = $request->event_time;
+            $upload->event_venue = $request->event_venue;
+            $upload->status = 1;
+            $update = $upload->save();
+            if($update){
+                return redirect('admin.event')->withSuccess('Blog Image has been successfully updated. ');
+            }else{
+                return redirect()->back()->withError('Something went wrong for updating post. ');
+            }
+        }else{
+            $request->validate([
+                'event_title' => 'required',
+                'event_content' => 'required',
+                'event_date' => 'required',
+                'event_time' => 'required',
+                'event_venue' => 'required',
+            ],[
+                'event_title.required' => 'The Event title is required.',
+                'event_content.required' => 'The Event Content is required',
+                'event_date.required' => 'The Event Date is required',
+                'event_time.required' => 'The Event Time is required',
+                'event_venue' => 'The Event Venue is required',
+            ]);
+
+            $update = Event::where('id', $request->event_id)->update([
+                'admin_id' => auth()->id(),
+                'event_title' =>  $request->event_title,
+                'event_content' =>  $request->event_content,
+                'event_date' =>  $request->event_date,
+                'event_time' => $request->event_time,
+                'event_venue' => $request->event_venue,
+                'status' => 1,
+            ]);
+           
+            if($update){
+                return redirect('admin.event')->withSuccess('Event has been successfully updated. ');
+            }else{
+                return redirect()->back()->withError('Something went wrong for updating post. ');
+            }
+
         }
     }
 

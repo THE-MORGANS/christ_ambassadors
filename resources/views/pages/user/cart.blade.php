@@ -117,7 +117,7 @@
                         @endforeach
                       @else
                       <tr>
-                        <span class="text-danger">No item in cart</span>
+                        <span class="text-danger" style="color: red">No item in cart</span>
                       </tr>
                     @endif
                   </tbody>

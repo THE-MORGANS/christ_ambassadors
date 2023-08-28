@@ -81,7 +81,7 @@ Route::controller(PaymentController::class)->group(function(){
 Route::controller(AdminController::class)->group(function(){
     Route::get('admin', 'index');
     Route::post('adminlogin', 'adminlogin');
-    Route::get('adminhome', 'home');
+    Route::get('adminhome', 'home')->name('admin.adminhome');
     Route::get('homebanner', 'homebanner');
     //Ecommerce
     Route::get('admin.ecommerce', 'ecommerce')->name('admin.ecommerce');
@@ -113,5 +113,5 @@ Route::controller(AdminController::class)->group(function(){
     Route::get('admin-podcast', 'podcast')->name('admin.podcast');
     Route::post('post.podcast', 'postpodcast')->name('post.podcast');
 
-    Route::get('adminlogout', 'logout')->name('logout');
+    Route::get('adminlogout', 'logout')->name('adminlogout');
     });

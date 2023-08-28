@@ -20,7 +20,8 @@ class ViewController extends Controller
     public function index(){
         $sixItemsgallery = Gallery::inRandomOrder()->limit(6)->get();
         $eventsindex = Event::inRandomOrder()->limit(4)->get();
-        return view('pages.user.index', compact('sixItemsgallery', 'eventsindex'));
+        $blogsindex = Blog::inRandomOrder()->limit(4)->get();
+        return view('pages.user.index', compact('sixItemsgallery', 'eventsindex', 'blogsindex' ));
     }
 
     public  function blogs(SearchRequest $request){

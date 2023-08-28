@@ -53,7 +53,7 @@
             <!--archive1-->
         </div> 
         @empty
-          <span class="text-danger">No Event(s) Found</span>
+          <span class="text-danger" style="color: red">No Event(s) Found</span>
         @endforelse
 
         

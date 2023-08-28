@@ -79,17 +79,38 @@
                             <div class="modal-body">
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label class="form-label">Post title</label>
-                                        <input name='post_title' value="{{ $event->posttitle }}" type="text" class="form-control"  placeholder="Enter Post title">
-                                        @error('post_title')
+                                        <label class="form-label">Event title</label>
+                                        <input name='event_title' value="{{ $event->event_title }}" type="text" class="form-control"  placeholder="Enter Post title">
+                                        @error('event_title')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Post Content</label>
-                                        <textarea name='post_content' rows="6" class="form-control"  placeholder="Content...">{{ $event->content }}</textarea>
-                                        @error('post_content')
+                                        <label class="form-label">Event Content</label>
+                                        <textarea name='event_content' rows="6" class="form-control"  placeholder="Content...">{{ $event->event_content }}</textarea>
+                                        @error('event_content')
                                         <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Event Date</label>
+                                        <input required type="text" name="event_date" value="{{ $event->event_date }}" class="form-control" data-mask="00/00/0000" data-mask-visible="true" placeholder="00/00/0000" autocomplete="off">
+                                        @error('event_date')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Event Time</label>
+                                        <input required type="text" name="event_time" class="form-control" data-mask="00:00:00" data-mask-visible="true" placeholder="00:00:00" autocomplete="off" value="{{ $event->event_time }}">
+                                        @error('event_time')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Event Venue</label>
+                                        <input required type="text" class="form-control" name="event_venue" placeholder="Event Address" value="{{ $event->event_venue }}">
+                                        @error('event_venue')
+                                            <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
@@ -105,7 +126,7 @@
                                         @enderror
                                     </div>
                                     <div class="image_holder col-md-4 mb-2" style="max-width:250px">
-                                        <img class="border" id="imagePreview" src="{{ asset('storage/'.$event->featured_image) }}" alt="Image Preview" style=" max-width: 200px; max-height: 200px;">
+                                        <img class="border" id="imagePreview" src="{{ asset('assets/'.$event->event_image) }}" alt="Image Preview" style=" max-width: 200px; max-height: 200px;">
                                     </div>
                                 </div>
                         

@@ -83,7 +83,7 @@
      <!--start nicdark_masonry_container-->
       <div class="nicdark_masonry_container">
         <?php $totalBlogs = count($blogs); ?>
-        @foreach ($blogs as $index => $blog)
+        @foreach ($blogsindex as $index => $blog)
           <?php
            $encrypted_id = encrypt($blog->id);
           ?>
