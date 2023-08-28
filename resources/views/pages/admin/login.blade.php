@@ -12,10 +12,8 @@
         </div>
         <div class="card card-md">
             <div class="card-body">
-            <img width="270px" height="43px" alt="" src="{{ asset('assets/img/ca_logo.svg')}}">
             <h2 class="h2 text-center mb-4">Admin Login to your account</h2>
-                
-           
+              
                 @if (session('error'))
                     <div class="col-sm-12 mb-3">
                         <div class="alert alert-error alert-dismissible fade show" role="alert">

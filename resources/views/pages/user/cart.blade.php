@@ -82,7 +82,7 @@
           <div class="nicdark_textevidence nicdark_shadow nicdark_radius_top left overflow_scroll">   
               <table class="nicdark_table extrabig nicdark_bg_orange nicdark_radius_top ">
                   <thead class="nicdark_border_orange">
-                      <tr>
+                      <tr> 
                           <td class="nicdark_width_percentage1"><h4 class="white"></h4></td>
                           <td class="nicdark_width_percentage1"><h4 class="white"></h4></td>
                           <td><h4 class="white">PRODUCT</h4></td>
@@ -145,7 +145,6 @@
                           console.log("AJAX request failed: " + error);
                         }
                       });
-    
     
                       // Find all cart items
                       $('.cart-item').each(function() {
